@@ -21,13 +21,21 @@ const App = () => {
     }
   };
 
+  const newQuote = () => {
+    setLoader(true);
+    getQuote();
+  };
   useEffect(() => {
     getQuote();
   }, []);
 
   return (
     <div className="App">
-      {loader ? <h3>Loading...</h3> : <QuoteBox quote={quote} />}
+      {loader ? (
+        <h3>Loading...</h3>
+      ) : (
+        <QuoteBox quote={quote} newQuote={newQuote} />
+      )}
     </div>
   );
 };

@@ -1,26 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from 'react';
+import QuoteBox from './QuoteBox';
 
-function App() {
+const API_URL = 'http://quotes.stormconsultancy.co.uk/random.json';
+
+const App = () => {
+  const [quote, setQuote] = useState();
+  const [loader, setLoader] = useState(true);
+
+  const getQuote = async () => {
+    try {
+      let res = await fetch(API_URL);
+      if (!res.ok) {
+        throw new Error('Error with network response');
+      }
+      let data = await res.json();
+      setQuote({ text: data.quote, author: data.author });
+      setLoader(false);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  useEffect(() => {
+    getQuote();
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {loader ? <h3>Loading...</h3> : <QuoteBox quote={quote} />}
     </div>
   );
-}
+};
 
 export default App;

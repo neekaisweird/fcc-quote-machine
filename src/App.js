@@ -31,11 +31,7 @@ const App = () => {
 
   return (
     <div className="App">
-      {loader ? (
-        <h3>Loading...</h3>
-      ) : (
-        <QuoteBox quote={quote} newQuote={newQuote} />
-      )}
+      <QuoteBox loader={loader} quote={quote} newQuote={newQuote} />
     </div>
   );
 };

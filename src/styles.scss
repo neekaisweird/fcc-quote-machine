@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css?family=Quicksand:400,700&display=swap');
+
+$primary-font: 'Quicksand', sans-serif;
+$primary-color: #5a7b7b;
+
+body {
+  margin: 0;
+  background-color: $primary-color;
+}
+
+.App {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+#quote-box {
+  font-family: $primary-font;
+  background-color: #fff;
+  box-sizing: border-box;
+  width: 800px;
+  padding: 1rem 2rem;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  h1 {
+    margin: 0;
+    font-size: 1.5rem;
+    text-align: center;
+    font-weight: 400;
+  }
+  h4 {
+    font-size: 1.1rem;
+    font-weight: 400;
+  }
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 35%;
+
+  #tweet-quote,
+  #new-quote {
+    font-family: inherit;
+    text-decoration: none;
+    border: 1px solid $primary-color;
+    border-radius: 2px;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    color: $primary-color;
+    background: linear-gradient(to bottom, #fff 50%, $primary-color 50%);
+    background-size: 100% 200%;
+    background-position: left top;
+    transition: all 250ms ease-in-out;
+    &:hover {
+      cursor: pointer;
+      color: #fff;
+      background-position: left bottom;
+    }
+  }
+}
+
+.loader {
+  padding: 3rem;
+}
